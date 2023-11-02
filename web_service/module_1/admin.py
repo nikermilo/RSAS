@@ -18,6 +18,7 @@ class ChildAdmin (admin.ModelAdmin):
     search_fields = ('Child_FIO', 'Child_Parent_Code__Parent_Code')
 
     raw_id_fields = ('Child_Parent_Code', )
+    """GIT"""
 
 class AdministratorAdmin (admin.ModelAdmin):
     list_display = ('id', 'Administrator_Tabel', 'Administrator_FIO', 'Administrator_Phonenumber', 'Administrator_Passport', 'Administrator_email', 'Administrator_Polis')
