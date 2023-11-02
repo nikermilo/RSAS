@@ -4,7 +4,7 @@ from .models import Parent, Child, Administrator, Zav_UVR, Statement, Agreement
 
 
 class ParentAdmin (admin.ModelAdmin):
-    list_display = ('id', 'Parent_Code', 'Parent_FIO', 'Parent_Date', 'Parent_Home_Propiska', 'Parent_Home', 'Parent_SNILS', 'Parent_Phonenumeber', 'Parent_Passport')
+    list_display = ('Parent_Code', 'Parent_FIO', 'Parent_Date', 'Parent_Home_Propiska', 'Parent_Home', 'Parent_SNILS', 'Parent_Phonenumeber', 'Parent_Passport')
 
 
 class ChildAdmin (admin.ModelAdmin):
@@ -13,12 +13,12 @@ class ChildAdmin (admin.ModelAdmin):
     
     my_Child_Parent_Code.short_description = 'Код родителя'
 
-    list_display = ('id', 'Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
+    list_display = ('Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
 
     search_fields = ('Child_FIO', 'Child_Parent_Code__Parent_Code')
 
     raw_id_fields = ('Child_Parent_Code', )
-    """GIT"""
+    
 
 class AdministratorAdmin (admin.ModelAdmin):
     list_display = ('id', 'Administrator_Tabel', 'Administrator_FIO', 'Administrator_Phonenumber', 'Administrator_Passport', 'Administrator_email', 'Administrator_Polis')

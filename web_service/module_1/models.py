@@ -20,12 +20,12 @@ class Parent(models.Model):
         verbose_name = "Родитель"
         verbose_name_plural = "Родители"
 
-    Parent_Code = models.TextField(verbose_name="Код родителя")
+    Parent_Code = models.TextField(verbose_name="Код родителя", primary_key=True)
     Parent_FIO = models.TextField(verbose_name="ФИО Родителя")
     Parent_Date = models.DateField(verbose_name="Дата рождения родителя")
     Parent_Home_Propiska = models.TextField(verbose_name="Адрес прописки родителя")
     Parent_Home = models.TextField(verbose_name="Место жительства родителя")
-    Parent_SNILS = models.TextField(verbose_name="СНИЛС родителя")
+    Parent_SNILS = models.IntegerField(verbose_name="СНИЛС родителя")
     Parent_Phonenumeber = models.TextField(verbose_name="Номер телефона родителя")
     Parent_Passport = models.TextField(verbose_name="Данные паспорта родителя")
 
@@ -40,7 +40,7 @@ class Child(models.Model):
         verbose_name = "Ребёнок"
         verbose_name_plural = "Дети"
 
-    Child_Code = models.TextField(verbose_name="Код обучающегося")
+    Child_Code = models.TextField(verbose_name="Код обучающегося", primary_key=True)
     Child_FIO = models.TextField(verbose_name="ФИО ребёнка")
     Child_Date = models.DateField(verbose_name="Дата рождения ребёнка")
     Child_Home_Propiska = models.TextField(verbose_name="Адрес прописки ребёнка")
@@ -90,7 +90,7 @@ class Zav_UVR(models.Model):
         return f"{self.Zav_UVR_FIO} {self.Zav_UVR_Phonenumber} {self.Zav_UVR_Passport} {self.Zav_UVR_email} {self.Zav_UVR_Polis} {self.Zav_UVR_Tabel}"
     
 class Statement(models.Model):
-    """"Заявление"""
+    """Заявление"""
 
     class Meta:
         db_table = "Statements"
@@ -107,7 +107,7 @@ class Statement(models.Model):
         return f"{self.Statement_Code} {self.Statement_Parent_Code} {self.Statement_Administrator_Tabel} {self.Statement_Course} {self.Statement_Group}"
 
 class Agreement(models.Model):
-    """"Итоговый договор"""
+    """Итоговый договор"""
 
     class Meta:
         db_table = "Agreements"
