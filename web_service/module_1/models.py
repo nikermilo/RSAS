@@ -20,7 +20,7 @@ class Parent(models.Model):
         verbose_name = "Родитель"
         verbose_name_plural = "Родители"
 
-    Parent_Code = models.TextField(verbose_name="Код родителя", primary_key=True)
+    Parent_Code = models.IntegerField(verbose_name="Код родителя", primary_key=True)
     Parent_FIO = models.TextField(verbose_name="ФИО Родителя")
     Parent_Date = models.DateField(verbose_name="Дата рождения родителя")
     Parent_Home_Propiska = models.TextField(verbose_name="Адрес прописки родителя")
@@ -40,13 +40,13 @@ class Child(models.Model):
         verbose_name = "Ребёнок"
         verbose_name_plural = "Дети"
 
-    Child_Code = models.TextField(verbose_name="Код обучающегося", primary_key=True)
+    Child_Code = models.IntegerField(verbose_name="Код обучающегося")
     Child_FIO = models.TextField(verbose_name="ФИО ребёнка")
     Child_Date = models.DateField(verbose_name="Дата рождения ребёнка")
     Child_Home_Propiska = models.TextField(verbose_name="Адрес прописки ребёнка")
     Child_Home = models.TextField(verbose_name="Место жительства ребёнка")
     Child_Gender = models.TextField(verbose_name="Пол ребёнка", validators=[gender_check])
-    Child_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="ID родителя")
+    Child_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Код родителя")
 
     def __str__(self):
         return f"{self.Child_Code} {self.Child_Date} {self.Child_FIO} {self.Child_Gender} {self.Child_Home} {self.Child_Home_Propiska} {self.Child_Parent_Code}"
@@ -59,12 +59,12 @@ class Administrator(models.Model):
         verbose_name = "Администратор"
         verbose_name_plural = "Администраторы"
 
-    Administrator_Tabel = models.TextField(verbose_name="Табельный номер администратора")
+    Administrator_Tabel = models.IntegerField(verbose_name="Табельный номер администратора")
     Administrator_FIO = models.TextField(verbose_name="ФИО администратора")
     Administrator_Phonenumber = models.TextField(verbose_name="Номер телефона администратора")
     Administrator_Passport = models.TextField(verbose_name="Данные паспорта администратора")
     Administrator_email = models.TextField(verbose_name="Электронная почта администратора")
-    Administrator_Polis = models.TextField(verbose_name="Полис обязательного медицинского страхования администратора")
+    Administrator_Polis = models.PositiveBigIntegerField(verbose_name="Полис обязательного медицинского страхования администратора")
 
 
     def __str__(self):
@@ -78,12 +78,12 @@ class Zav_UVR(models.Model):
         verbose_name = "Заведующий учебно-воспитательной работы"
         verbose_name_plural = "Заведующие учебно-воспитательной работы"
 
-    Zav_UVR_Tabel = models.TextField(verbose_name="Табельный номер заведующего учебно-воспитательной работы")
+    Zav_UVR_Tabel = models.IntegerField(verbose_name="Табельный номер заведующего учебно-воспитательной работы")
     Zav_UVR_FIO = models.TextField(verbose_name="ФИО заведующего учебно-воспитательной работы")
     Zav_UVR_Phonenumber = models.TextField(verbose_name="Номер телефона заведующего учебно-воспитательной работы")
     Zav_UVR_Passport = models.TextField(verbose_name="Данные паспорта заведующего учебно-воспитательной работы")
     Zav_UVR_email = models.TextField(verbose_name="Электронная почта заведующего учебно-воспитательной работы")
-    Zav_UVR_Polis = models.TextField(verbose_name="Полис обязательного медицинского страхования заведующего учебно-воспитательной работы")
+    Zav_UVR_Polis = models.PositiveBigIntegerField(verbose_name="Полис обязательного медицинского страхования заведующего учебно-воспитательной работы")
 
 
     def __str__(self):
@@ -97,7 +97,7 @@ class Statement(models.Model):
         verbose_name = "Заявление"
         verbose_name_plural = "Заявления"
 
-    Statement_Code = models.TextField(verbose_name="Код заявления")
+    Statement_Code = models.IntegerField(verbose_name="Код заявления")
     Statement_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Родитель")
     Statement_Administrator_Tabel = models.ForeignKey(Administrator, on_delete=models.RESTRICT, verbose_name="Администратор, готовящий заявление")
     Statement_Course = models.TextField(verbose_name="Выбранный обучающий курс")
@@ -114,7 +114,7 @@ class Agreement(models.Model):
         verbose_name = "Итоговый договор"
         verbose_name_plural = "Итоговые договора"
 
-    Agreement_Code = models.TextField(verbose_name="Код договора")
+    Agreement_Code = models.IntegerField(verbose_name="Код договора")
     Agreement_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Родитель")
     Agreement_Zav_UVR_Tabel = models.ForeignKey(Zav_UVR, on_delete=models.RESTRICT, verbose_name="Заведующий учебно-воспитательной работой, готовящий договор")
     Agreement_Statement_Code = models.ForeignKey(Statement, on_delete=models.RESTRICT, verbose_name="Заявление, являющееся основанием заключения договора")

@@ -13,7 +13,7 @@ class ChildAdmin (admin.ModelAdmin):
     
     my_Child_Parent_Code.short_description = 'Код родителя'
 
-    list_display = ('Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
+    list_display = ('id', 'Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
 
     search_fields = ('Child_FIO', 'Child_Parent_Code__Parent_Code')
 
