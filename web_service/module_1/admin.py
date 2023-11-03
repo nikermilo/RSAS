@@ -5,30 +5,36 @@ from .models import Parent, Child, Administrator, Zav_UVR, Statement, Agreement
 
 class ParentAdmin (admin.ModelAdmin):
     list_display = ('id', 'Parent_Code', 'Parent_FIO', 'Parent_Date', 'Parent_Home_Propiska', 'Parent_Home', 'Parent_SNILS', 'Parent_Phonenumeber', 'Parent_Passport')
+    #Поиск по полям
+    search_fields = ('Parent_FIO', 'Parent_Code')
 
 
 class ChildAdmin (admin.ModelAdmin):
+    #Методы получения полей из связанных таблиц
     def my_Child_Parent_Code(self, obj):
         return obj.Child_Parent_Code.Parent_Code
     
     my_Child_Parent_Code.short_description = 'Код родителя'
 
     list_display = ('id', 'Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
-
+    #Поиск по полям
     search_fields = ('Child_FIO', 'Child_Parent_Code__Parent_Code')
-
+    #Замена выпадающего списка на поиск и введение идентификатора
     raw_id_fields = ('Child_Parent_Code', )
     
 
 class AdministratorAdmin (admin.ModelAdmin):
     list_display = ('id', 'Administrator_Tabel', 'Administrator_FIO', 'Administrator_Phonenumber', 'Administrator_Passport', 'Administrator_email', 'Administrator_Polis')
+    #Поиск по полям
     search_fields = ('Administrator_FIO', 'Administrator_Tabel', 'Administrator_Phonenumber')
 
 class Zav_UVRAdmin (admin.ModelAdmin):
     list_display = ('id', 'Zav_UVR_Tabel', 'Zav_UVR_FIO', 'Zav_UVR_Phonenumber', 'Zav_UVR_Passport', 'Zav_UVR_email', 'Zav_UVR_Polis')
+    #Поиск по полям
     search_fields = ('Zav_UVR_FIO', 'Zav_UVR_Tabel', 'Zav_UVR_Phonenumber')
 
 class StatementAdmin (admin.ModelAdmin):
+    #Методы получения полей из связанных таблиц
     def my_Statement_Parent_Code(self, obj):
         return obj.Statement_Parent_Code.Parent_Code
     
@@ -39,12 +45,13 @@ class StatementAdmin (admin.ModelAdmin):
     my_Statement_Administrator_Tabel.short_description = 'Табельный номер администратора'
     
     list_display = ('id', 'Statement_Code', 'my_Statement_Parent_Code', 'my_Statement_Administrator_Tabel', 'Statement_Course', 'Statement_Group')
-
+    #Поиск по полям
     search_fields = ('Statement_Code', 'Statement_Administrator_Tabel__Administrator_Tabel', 'Statement_Parent_Code__Parent_Code')
 
     """raw_id_fields = ('Statement_Parent_Code', )"""
     
 class AgreementAdmin (admin.ModelAdmin):
+    #Методы получения полей из связанных таблиц
     def my_Agreement_Parent_Code(self, obj):
         return obj.Agreement_Parent_Code.Parent_Code
     def my_Agreement_Zav_UVR_Tabel(self, obj):
@@ -59,9 +66,11 @@ class AgreementAdmin (admin.ModelAdmin):
     my_Agreement_Statement_Code.short_description = 'Номер завления'
     my_Agreement_Administrator_Tabel.short_description = 'Табельный номер администратора'
 
-    list_display = ('id', 'Agreement_Code', 'my_Agreement_Parent_Code', 'my_Agreement_Zav_UVR_Tabel', 'my_Agreement_Statement_Code', 'my_Agreement_Administrator_Tabel', 'Agreement_Course', 'Agreement_Group', 'Agreement_Requisites', 'Agreement_Price')
-
-    search_fields = ('Agreement_Code', 'Agreement_Parent_Code__Parent_Code', 'Agreement_Zav_UVR_Tabel__Zav_UVR_Tabel', 'Agreement_Statement_Code__Statement_Code', 'Agreement_Administrator_Tabel__Administrator_Tabel')
+    list_display = ('id', 'Agreement_Code', 'my_Agreement_Parent_Code', 'my_Agreement_Zav_UVR_Tabel', 'my_Agreement_Statement_Code', 'my_Agreement_Administrator_Tabel',
+                    'Agreement_Course', 'Agreement_Group', 'Agreement_Requisites', 'Agreement_Price')
+    #Поиск по полям
+    search_fields = ('Agreement_Code', 'Agreement_Parent_Code__Parent_Code', 'Agreement_Zav_UVR_Tabel__Zav_UVR_Tabel', 'Agreement_Statement_Code__Statement_Code',
+                     'Agreement_Administrator_Tabel__Administrator_Tabel')
 
     """raw_id_fields = ('Agreement_Course', 'Agreement_Group')"""
 

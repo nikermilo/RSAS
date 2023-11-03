@@ -28,10 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
 INSTALLED_APPS = [
-    'module_1.apps.Module1Config',
+    'module_1.apps.Module1Config',          #Подключение модуля
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +40,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',         #Приведение времени к локальному 
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,8 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'web_service.urls'
@@ -79,6 +77,7 @@ WSGI_APPLICATION = 'web_service.wsgi.application'
 
 DATABASES = {
     "default": {
+        #Настройки подключения к БД
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'web_db',
         'USER': 'nikermilo',

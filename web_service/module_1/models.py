@@ -3,7 +3,6 @@ from django.utils.translation import gettext_lazy
 from django.db import models
 from datetime import datetime
 
-# Create your models here.
 
 def gender_check(Child_Gender):
     if Child_Gender not in ["Мужской", "Женский"]:
@@ -30,7 +29,8 @@ class Parent(models.Model):
     Parent_Passport = models.TextField(verbose_name="Данные паспорта родителя")
 
     def __str__(self):
-        return f"{self.Parent_FIO} {self.Parent_Date} {self.Parent_Home_Propiska} {self.Parent_Home} {self.Parent_SNILS} {self.Parent_Phonenumeber} {self.Parent_Passport} {self.Parent_Code}"
+        return f"{self.Parent_FIO} {self.Parent_Date} {self.Parent_Home_Propiska} {self.Parent_Home} {self.Parent_SNILS}
+        {self.Parent_Phonenumeber} {self.Parent_Passport} {self.Parent_Code}"
 
 class Child(models.Model):
     """"Дети"""
@@ -68,7 +68,8 @@ class Administrator(models.Model):
 
 
     def __str__(self):
-        return f"{self.Administrator_FIO} {self.Administrator_Phonenumber} {self.Administrator_Passport} {self.Administrator_email} {self.Administrator_Polis} {self.Administrator_Tabel}"
+        return f"{self.Administrator_FIO} {self.Administrator_Phonenumber} {self.Administrator_Passport} {self.Administrator_email}
+        {self.Administrator_Polis} {self.Administrator_Tabel}"
 
 class Zav_UVR(models.Model):
     """"Заведующий учебно-воспитательной работы"""
@@ -118,12 +119,14 @@ class Agreement(models.Model):
     Agreement_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Родитель")
     Agreement_Zav_UVR_Tabel = models.ForeignKey(Zav_UVR, on_delete=models.RESTRICT, verbose_name="Заведующий учебно-воспитательной работой, готовящий договор")
     Agreement_Statement_Code = models.ForeignKey(Statement, on_delete=models.RESTRICT, verbose_name="Заявление, являющееся основанием заключения договора")
-    Agreement_Administrator_Tabel = models.ForeignKey(Administrator, on_delete=models.RESTRICT, verbose_name="Администратор, готовящий заявление, являющееся основанием заключения договора")
+    Agreement_Administrator_Tabel = models.ForeignKey(Administrator, on_delete=models.RESTRICT,
+                                                      verbose_name="Администратор, готовящий заявление, являющееся основанием заключения договора")
     Agreement_Course = models.TextField(verbose_name="Выбранный обучающий курс")
     Agreement_Group = models.TextField(verbose_name="Выбранная учебная группа")
     Agreement_Requisites = models.TextField(verbose_name="Реквизиты банка от компании")
     Agreement_Price = models.IntegerField(verbose_name="Цена предоставления услуг")
 
     def __str__(self):
-        return f"{self.Agreement_Code} {self.Agreement_Parent_Code} {self.Agreement_Zav_UVR_Tabel} {self.Agreement_Statement_Code} {self.Agreement_Administrator_Tabel} {self.Agreement_Course} {self.Agreement_Group} {self.Agreement_Requisites} {self.Agreement_Price}"
+        return f"{self.Agreement_Code} {self.Agreement_Parent_Code} {self.Agreement_Zav_UVR_Tabel} {self.Agreement_Statement_Code} {self.Agreement_Administrator_Tabel}
+        {self.Agreement_Course} {self.Agreement_Group} {self.Agreement_Requisites} {self.Agreement_Price}"
     
