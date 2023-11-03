@@ -29,8 +29,7 @@ class Parent(models.Model):
     Parent_Passport = models.TextField(verbose_name="Данные паспорта родителя")
 
     def __str__(self):
-        return f"{self.Parent_FIO} {self.Parent_Date} {self.Parent_Home_Propiska} {self.Parent_Home} {self.Parent_SNILS}
-        {self.Parent_Phonenumeber} {self.Parent_Passport} {self.Parent_Code}"
+        return f"{self.Parent_FIO} {self.Parent_Date} {self.Parent_Home_Propiska} {self.Parent_Home} {self.Parent_SNILS} {self.Parent_Phonenumeber} {self.Parent_Passport} {self.Parent_Code}"
 
 class Child(models.Model):
     """"Дети"""
@@ -46,7 +45,7 @@ class Child(models.Model):
     Child_Home_Propiska = models.TextField(verbose_name="Адрес прописки ребёнка")
     Child_Home = models.TextField(verbose_name="Место жительства ребёнка")
     Child_Gender = models.TextField(verbose_name="Пол ребёнка", validators=[gender_check])
-    Child_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Код родителя")
+    Child_Parent_Code = models.ForeignKey(Parent, on_delete=models.RESTRICT, verbose_name="Идентификатор родителя")
 
     def __str__(self):
         return f"{self.Child_Code} {self.Child_Date} {self.Child_FIO} {self.Child_Gender} {self.Child_Home} {self.Child_Home_Propiska} {self.Child_Parent_Code}"
@@ -68,8 +67,7 @@ class Administrator(models.Model):
 
 
     def __str__(self):
-        return f"{self.Administrator_FIO} {self.Administrator_Phonenumber} {self.Administrator_Passport} {self.Administrator_email}
-        {self.Administrator_Polis} {self.Administrator_Tabel}"
+        return f"{self.Administrator_FIO} {self.Administrator_Phonenumber} {self.Administrator_Passport} {self.Administrator_email} {self.Administrator_Polis} {self.Administrator_Tabel}"
 
 class Zav_UVR(models.Model):
     """"Заведующий учебно-воспитательной работы"""
@@ -127,6 +125,5 @@ class Agreement(models.Model):
     Agreement_Price = models.IntegerField(verbose_name="Цена предоставления услуг")
 
     def __str__(self):
-        return f"{self.Agreement_Code} {self.Agreement_Parent_Code} {self.Agreement_Zav_UVR_Tabel} {self.Agreement_Statement_Code} {self.Agreement_Administrator_Tabel}
-        {self.Agreement_Course} {self.Agreement_Group} {self.Agreement_Requisites} {self.Agreement_Price}"
+        return f"{self.Agreement_Code} {self.Agreement_Parent_Code} {self.Agreement_Zav_UVR_Tabel} {self.Agreement_Statement_Code} {self.Agreement_Administrator_Tabel} {self.Agreement_Course} {self.Agreement_Group} {self.Agreement_Requisites} {self.Agreement_Price}"
     

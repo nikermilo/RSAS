@@ -14,7 +14,7 @@ class ChildAdmin (admin.ModelAdmin):
     def my_Child_Parent_Code(self, obj):
         return obj.Child_Parent_Code.Parent_Code
     
-    my_Child_Parent_Code.short_description = 'Код родителя'
+    my_Child_Parent_Code.short_description = 'Идентификатор родителя'
 
     list_display = ('id', 'Child_Code', 'Child_FIO', 'Child_Date', 'Child_Home_Propiska', 'Child_Home', 'Child_Gender', 'my_Child_Parent_Code')
     #Поиск по полям
