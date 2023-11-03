@@ -4,7 +4,7 @@ from .models import Parent, Child, Administrator, Zav_UVR, Statement, Agreement
 
 
 class ParentAdmin (admin.ModelAdmin):
-    list_display = ('Parent_Code', 'Parent_FIO', 'Parent_Date', 'Parent_Home_Propiska', 'Parent_Home', 'Parent_SNILS', 'Parent_Phonenumeber', 'Parent_Passport')
+    list_display = ('id', 'Parent_Code', 'Parent_FIO', 'Parent_Date', 'Parent_Home_Propiska', 'Parent_Home', 'Parent_SNILS', 'Parent_Phonenumeber', 'Parent_Passport')
 
 
 class ChildAdmin (admin.ModelAdmin):

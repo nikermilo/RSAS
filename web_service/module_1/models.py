@@ -20,7 +20,7 @@ class Parent(models.Model):
         verbose_name = "Родитель"
         verbose_name_plural = "Родители"
 
-    Parent_Code = models.IntegerField(verbose_name="Код родителя", primary_key=True)
+    Parent_Code = models.IntegerField(verbose_name="Код родителя")
     Parent_FIO = models.TextField(verbose_name="ФИО Родителя")
     Parent_Date = models.DateField(verbose_name="Дата рождения родителя")
     Parent_Home_Propiska = models.TextField(verbose_name="Адрес прописки родителя")
